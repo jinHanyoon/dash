@@ -1,17 +1,17 @@
 'use client'
 import Image from "next/image";
-import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
+import supabase from "../api/page";
+import LoginForm from "./loginForm";
 
-const supabaseUrl = 'https://geoateqvsqtelzushdpi.supabase.co'
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 export default function Writing({}) {
     const [page01, setData] = useState([]);
     const [titleValue, setTitleValue] = useState('');
     const [bodyValue, setBodyValue] = useState('');
     const [showForm, setShowForm] = useState(false);
+    const [showLoginForm, setShowLoginForm] = useState(false);
   
 
     const handleSubmit = async () => {
@@ -36,10 +36,36 @@ export default function Writing({}) {
     const CloseForm = () => {
       setShowForm(false);
   };
+  const handleLoginClick = () => {
+    setShowLoginForm(true);
+};
+
+const closeLoginForm = () => {
+    setShowLoginForm(false);
+};
+
+
+const handleLogin = async (username, password) => {
+  const { error: signInError } = await supabase.auth.signInWithPassword({ email: username, password });
+  if (signInError) {
+      setMessage(signInError.message);
+      return { error: signInError.message };
+  }
+  setTimeout(() => {
+      setShowLoginForm(false);
+  }, 1000);
+  return { success: true };
+};
 
     return (
     <>
   <div onClick={toggleForm} className= ' fixed z-40 right-10 bottom-10 text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>글쓰기</div> 
+  <div  onClick={handleLoginClick} className= ' fixed z-40 right-40 bottom-10 text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>로그인</div> 
+
+  {showLoginForm && (
+                <LoginForm onClose={closeLoginForm} onLogin={handleLogin} />
+            )}
+
 {showForm  && (
         <div className='bg-neutral-500/50 w-full h-screen fixed z-50 top-0' >
           <div className='w-9/12 h-full m-auto relative flex flex-col items-end'  >

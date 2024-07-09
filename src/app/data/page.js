@@ -1,13 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import Image from "next/image";
 import Loading from '../loading';
+import supabase from '../api/page';
 
-
-const supabaseUrl = 'https://geoateqvsqtelzushdpi.supabase.co'
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
     // let { data: first_data } = await supabase.from('page01').select('*')
 
 export default function Data() {
