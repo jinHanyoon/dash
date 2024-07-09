@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '../api/page';
+import supabase from '../api/supabb';
 import LoginForm from '../component/loginForm';
 export default function LoginPage() {
     const router = useRouter();

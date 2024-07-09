@@ -1,12 +1,10 @@
 'use client'
-import Image from "next/image";
 import { useEffect, useState } from 'react';
-import supabase from "../api/page";
+import supabase from "../api/supabb";
 import LoginForm from "./loginForm";
+import Image from "next/image";
 
-
-
-export default function Writing({}) {
+export default function Writing() {
     const [page01, setData] = useState([]);
     const [titleValue, setTitleValue] = useState('');
     const [bodyValue, setBodyValue] = useState('');

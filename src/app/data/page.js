@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from "next/image";
 import Loading from '../loading';
-import supabase from '../api/page';
+import supabase from '../api/supabb';
 
     // let { data: first_data } = await supabase.from('page01').select('*')
 
