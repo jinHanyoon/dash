@@ -20,9 +20,7 @@ export default function LoginForm({ onLogin, onClose  }) {
   }
 
   const handleSignUpClick = (e) => {
-    e.preventDefault();
-    window.location.href = '/signup';
-    window.close();
+    setClose(true);
 }
 
 
