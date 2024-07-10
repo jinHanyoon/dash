@@ -19,7 +19,11 @@ export default function LoginForm({ onLogin, onClose  }) {
     setError(loginResult.error);
   }
 
-
+  const handleSignUpClick = (e) => {
+    e.preventDefault();
+    window.location.href = '/signup';
+    window.close();
+}
 
 
  return (
@@ -51,7 +55,7 @@ export default function LoginForm({ onLogin, onClose  }) {
     />
   </div>
   <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">입장</button>
-  <Link href="/signup" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-2">아이디가 없어요</Link>
+  <Link href="/signup" onClick={handleSignUpClick} className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-2">아이디가 없어요</Link>
   
 
 </form>
