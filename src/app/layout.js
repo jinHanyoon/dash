@@ -2,7 +2,8 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import Header from "./component/header";
 import Footer from "./component/footer";
-import Writing from "./component/writing";
+// import Writing from "./component/writing";
+import SideBar from"./component/sideBar/page"
 
 import css from "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
         <body>
       
       <Header/>
-      <Writing/>
+      <SideBar/>
 
   {children}
       

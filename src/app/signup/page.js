@@ -2,6 +2,8 @@
 import supabase from "../api/supabb"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+
 export default function SignUpPage(){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -9,6 +11,36 @@ export default function SignUpPage(){
   const [success, setSuccess] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter()
+
+
+
+    async function signInWithKakao() {
+      try {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "kakao",
+          options: {
+            redirectTo: "https://dash-rose-two.vercel.app/auth-callback",
+          },
+        });
+    
+        if (error) {
+          console.error('Error during Kakao sign in:', error);
+          setError(error.message);
+        } else {
+          // 로그인 성공 처리
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session) {
+            setSuccess("로그인 성공!");
+            setTimeout(() => {
+              router.push('/about');
+            }, 0);
+          }
+        }
+      } catch (error) {
+        console.error('Unexpected error during Kakao sign in:', error);
+        setError('서버 요청 중 오류가 발생했습니다.');
+      }
+    }
 
 
     const handleSignUp = async (e) => {
@@ -62,6 +94,15 @@ export default function SignUpPage(){
         <button type="submit" disabled={isSubmitting} className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none f focus:ring-offset-2 focus:ring-indigo-500">
           {isSubmitting ? '회원가입 중...' : '어서와'}
         </button>
+        <div onClick={signInWithKakao} className=' w-16 h-16  mt-4 '>
+        <Image alt="ecommerce"
+  className="w-16 h-16 object-cover object-center block hover:opacity-50"
+  src="/img/kakao.png"
+   width={300} height={300}/>
+   <p className='text-center text-gray-500 font-700'>KaKao</p>
+        </div>
+
+
         {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
         {success && <p className="mt-2 text-sm text-green-600">{success}</p>}
         </form>
