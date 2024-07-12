@@ -15,7 +15,8 @@ export default function AuthCallback() {
       if (error) {
         console.error('Error handling auth callback:', error);
       } else {
-        router.push('/about'); // 로그인 후 리디렉션할 경로
+        router.push('/');
+
       }
     };
 
