@@ -27,13 +27,9 @@ export default function SignUpPage(){
           console.error('Error during Kakao sign in:', error);
           setError(error.message);
         } else {
-          // 로그인 성공 처리
           const { data: { session } } = await supabase.auth.getSession();
           if (session) {
             setSuccess("로그인 성공!");
-            setTimeout(() => {
-              router.push('/');
-            }, 0);
           }
         }
       } catch (error) {
@@ -55,9 +51,6 @@ export default function SignUpPage(){
             setError(signUpError.message);
           } else {
             setSuccess("회원가입 되써잉~");
-            setTimeout(() => {
-                router.push('/');
-              }, 1000);
             };
         } catch (error) {
           setError('서버 요청 중 오류가 발생했습니다.');
