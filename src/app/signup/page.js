@@ -32,7 +32,7 @@ export default function SignUpPage(){
           if (session) {
             setSuccess("로그인 성공!");
             setTimeout(() => {
-              router.push('/about');
+              router.push('/');
             }, 0);
           }
         }
