@@ -19,7 +19,7 @@ export default function SignUpPage(){
         const { data, error } = await supabase.auth.signInWithOAuth({
           provider: "kakao",
           options: {
-            redirectTo: "https://dash-rose-two.vercel.app/auth-callback",
+            redirectTo: "https://dash-rose-two.vercel.app/",
           },
         });
     
