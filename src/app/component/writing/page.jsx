@@ -1,7 +1,8 @@
-  import Writing from "./writing"
-  export default function WritingView({writing_hidden}) {
+'use client'
+import Writing from "./writing"
+  export default function WritingView({Writing_hidden}) {
     return (
-      <Writing writing_hidden={writing_hidden}/>
+      <Writing Writing_hidden={Writing_hidden}/>
     );
   }
   
