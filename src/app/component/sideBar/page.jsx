@@ -2,16 +2,15 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {logout} from '../../login/actions'
-import supabase from '../../api/supabb';
 import LoginPage from "../../login/page";
-import WritingView from "../writing/page.jsx"
+import WritingView from "../writing/page"
 import useUserSession from '../../api/session';
 
 
 
 import Image from "next/image";
-import Link from "next/link";
 export default function SideBar() {
+  
     const {Username} = useUserSession()
     const {ShowLogin } = useUserSession();
     const {ShowWriting} = useUserSession();
@@ -37,7 +36,6 @@ export default function SideBar() {
   }
   const Writing_hidden = () => {
     setWritingShow(false)
-    console.log('clee')
   }
 
 

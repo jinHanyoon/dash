@@ -7,8 +7,7 @@ import useUserSession from '../../api/session';
 
 export default function Writing({Writing_hidden}) {
   const router = useRouter();
-  const {Username} = useUserSession()
-
+  const {Username}= useUserSession()
     const [page01, setData] = useState([]);
     const [titleValue, setTitleValue] = useState('');
     const [bodyValue, setBodyValue] = useState('');
