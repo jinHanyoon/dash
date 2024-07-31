@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import Image from "next/image";
-import Header from "./component/header";
-import Footer from "./component/footer";
+import Header from "./component/header/header";
+import Footer from "./component/footer/footer";
 // import Writing from "./component/writing";
 import SideBar from"./component/sideBar/page"
 

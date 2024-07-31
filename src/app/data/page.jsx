@@ -7,6 +7,7 @@ import supabase from '../api/supabb';
     // let { data: first_data } = await supabase.from('page01').select('*')
 
 export default function Data() {
+
     const [page01, setData] = useState([]);
 
     useEffect(() => {
@@ -47,7 +48,7 @@ export default function Data() {
    <p onClick={() => handleDelete(page01.title, page01.body)} className="absolute top-2 right-2 w-1/12 h-1/6 bg-sky-300/50 rounded-full text-center font-bold text-white leading-loose">X</p>
           </a>
           <div className="mt-4">
-            <h2 className="text-gray-500 text-xs tracking-widest title-font mb-1">SupaBase</h2>
+            <h2 className="text-gray-500 text-xs tracking-widest title-font mb-1">{page01.username}</h2>
             <h3 className="text-gray-900 title-font text-lg font-medium">{page01.title}</h3>
             <p  className="mt-1">{page01.body}</p>
           </div>
